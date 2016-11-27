@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width,user-scalablle=no'>
+	<title>解决头部固定定位时候抖动的初级方案</title>
+	<style type="text/css">
+	#wrap{
+		height:100%;
+		overflow: auto;
+	}
+	html{
+		height:100%;
+		overflow: hidden;
+		
+	}
+	body{
+		/*相对定位加给body,解决ios下，设置overflow:hidden后横向拖动问题*/
+		height:100%;
+		margin: 0;
+		overflow: hidden;
+		position: relative;
+	}
+	header{
+		position: absolute;
+		top:0;
+		left:0;
+		height:50px;
+		line-height: 50px;
+		text-align:center;
+		width:200%;
+		background:rgba(0,0,0,0.5);
+	}
+	section{
+		margin-top: 50px;
+	}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<header>头部信息</header>
+	<section>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+		江苏一农民合作社资金断链<br/>
+
+	</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>viewport适配</title>
+
+	<script type="text/javascript">
+	(function(){
+		var w = window.screen.width;
+		var targetW = 320;
+		var scale = w/targetW;//当前尺寸/目标尺寸
+		
+		var meta = document.createElement('meta');
+		meta.name = 'viewport';
+		meta.content = 'user-scalable=no,iniaial-scale='+scale+',minimum-scale='+scale+',maximum-scale='+scale+'';
+		document.head.appendChild(meta);
+	})();
+	</script>
+<style type="text/css">
+	body{
+		margin:0;
+	}
+	div{
+		width:25%;
+		height:100px;
+		float:left;
+	}
+	#div1{
+		
+		background: red;
+	}
+	#div2{
+		
+		background: yellow;
+	}
+	#div3{
+	
+		background: green;
+	}
+	#div4{
+		
+		background: pink;
+	}
+	</style>
+
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+	<div id="div4"></div>
+</body>
+</html>

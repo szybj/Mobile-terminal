@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>默认样式的设置</title>
+	<style type="text/css">
+	body{
+		font-family: Helvetica;
+	}
+	body * {
+		/*禁止用户缩放字体大小*/
+		-webkit-text-size-adjust:100%;
+		/*禁止长按选中文字*/
+		-webkit-user-select:none;
+	}
+	a,input,button{
+		/*取消点击时候的高亮颜色*/
+		-webkit-tab-highlight-color:rgba(0,0,0,0);
+	}
+	input,button{
+		/*清除按钮的圆角*/
+		-webkit-appearance:none;
+		border-radius:0;
+	}
+	</style>
+</head>
+<body>
+	<a href="http://www.baidu.com">百度首页</a>
+	<button>按钮</button>
+	测试测试测试测试测试测试测试
+</body>
+</html>
