@@ -1,0 +1,360 @@
+/*
+* @Author: szy
+* @Date:   2017-02-14 20:13:53
+* @Last Modified by:   szy
+* @Last Modified time: 2017-02-17 17:09:08
+*/
+
+@charset "utf-8";
+body {
+    margin: 0;
+    font-family: Arial, "微软雅黑";
+    color: #666666
+}
+h1,h2,p{
+    margin:0;
+    font-weight: normal;
+}
+a,input{
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+img {
+    border: none;
+    vertical-align: top;
+}
+
+.page {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    font-size: 29px;
+    display: none;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.page:nth-of-type(1) {
+    z-index: 10;
+}
+
+.page:nth-of-type(2) {
+    z-index: 9
+}
+
+.page:nth-of-type(3) {
+    z-index: 8;
+}
+
+.page:nth-of-type(4) {
+    z-index: 7;
+}
+
+.page:nth-of-type(5) {
+    z-index: 6;
+}
+
+.pageShow {
+    display: block;
+}
+/* 欢迎页*/
+#welcome{
+    transition:1s;
+}
+.treeWrap {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    left: 0;
+    -webkit-transform: translateY(200px);
+    transform: translateY(200px);
+    opacity: 0;
+    -webkit-animation: 1s tree;
+    animation: 1s tree;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes tree {
+    100% {
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes tree {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.titleWrap {
+    position: relative;
+    padding-top: 50px;
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    -webkit-animation: 1s 0.3s tree;
+    animation: 1s 0.3s tree;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.shake {
+    position: absolute;
+    left: 509px;
+    top: 12px;
+    width: 28px;
+    height: 31px;
+    background: url(../img/shake.png) no-repeat;
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-animation:0.5s 2s shake;
+    animation:0.5s 2s shake;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@-webkit-keyframes shake {
+    0% {
+        -webkit-transform:rotate(-50deg);
+    }
+    10% {
+        -webkit-transform:rotate(45deg);
+    }
+    20% {
+        -webkit-transform:rotate(-40deg);
+    }
+    30% {
+        -webkit-transform:rotate(35deg);
+    }
+    40% {
+        -webkit-transform:rotate(-30deg);
+    }
+    50% {
+         -webkit-transform:rotate(25deg);
+    }
+    60% {
+         -webkit-transform:rotate(-20deg);
+    }
+    70% {
+         -webkit-transform:rotate(15deg);
+    }
+    80% {
+         -webkit-transform:rotate(-10deg);
+    }
+    90% {
+         -webkit-transform:rotate(5deg);
+    }
+    100% {
+         -webkit-transform:rotate(0deg);
+    }
+
+}
+
+@keyframes shake {
+     0% {
+        transform:rotate(-50deg);
+    }
+    10% {
+        transform:rotate(45deg);
+    }
+    20% {
+        transform:rotate(-40deg);
+    }
+    30% {
+        transform:rotate(35deg);
+    }
+    40% {
+        transform:rotate(-30deg);
+    }
+    50% {
+         transform:rotate(25deg);
+    }
+    60% {
+         transform:rotate(-20deg);
+    }
+    70% {
+         transform:rotate(15deg);
+    }
+    80% {
+         transform:rotate(-10deg);
+    }
+    90% {
+         transform:rotate(5deg);
+    }
+    100% {
+         transform:rotate(0deg);
+    }
+}
+
+.subTitle {
+    position: absolute;
+    padding-top: 16px;
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+    -webkit-animation: 1s 0.6s tree;
+    animation: 1s 0.6s tree;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.cloud {
+    position: absolute;
+    background: url(../img/cloud.png) no-repeat;
+    background-size: contain;
+}
+
+.cloud:nth-of-type(1) {
+    width: 58px;
+    height: 44px;
+    left: 432px;
+    top: 15px;
+    -webkit-animation:3s 1s cloud infinite alternate linear;
+    animation:3s 1s cloud infinite alternate linear;
+}
+
+.cloud:nth-of-type(2) {
+    width: 91px;
+    height: 70px;
+    left: 77px;
+    top: 79px;
+    -webkit-animation:3s 2.4s cloud infinite alternate linear;
+    animation:3s 2.4s cloud infinite alternate linear;
+}
+
+.cloud:nth-of-type(3) {
+    width: 54px;
+    height: 41px;
+    left: 402px;
+    top: 142px;
+    -webkit-animation:3s 2.8s cloud infinite alternate linear;
+    animation:3s 2.8s cloud infinite alternate linear;
+}
+@-webkit-keyframes cloud {
+    0%{
+        -webkit-transform:translateX(0px);
+    }
+    100%{
+        -webkit-transform:translateX(50px);
+    }
+}
+@keyframes cloud {
+    0%{
+        transform:translateX(0px);
+    }
+    100%{
+        transform:translateX(50px);
+    }
+}
+#logo {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    opacity:0;
+    bottom: 5%;
+    text-align: center;
+    -webkit-animation: 1s 0.8s logo;
+    animation: 1s 0.8s logo;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes logo {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes logoe {
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 首页 */
+#tabPic{
+    position:relative;
+    overflow:hidden;
+}
+#picList{
+    overflow:hidden;
+    width:500%;
+}
+#picList li{
+    float:left;
+    width:20%;
+}
+#picList img{
+    width:100%;
+    height:342px;
+}
+.picMask{
+    height:102px;
+    position: absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    background:linear-gradient(bottom,rgba(0,0,0,0.8) 0,rgba(0,0,0,0.8) 20%, rgba(0,0,0,0));
+    background:-webkit-linear-gradient(bottom,rgba(0,0,0,0.8) 0,rgba(0,0,0,0.8) 20%, rgba(0,0,0,0));
+}
+.picMask{
+    font-size:28px;
+    line-height:102px;
+    text-indent: 26px;
+    color:#fff;
+}
+.picMask nav{
+    height:10px;
+    right:26px;
+    top:56px;
+    position: absolute;
+}
+.picMask nav a{
+    float:left;
+    width:10px;
+    height:10px;
+    border-radius:5px;
+    margin-left:15px;
+    background:rgba(255,255,255,0.5);
+}
+.picMask nav a.active{
+     background:rgba(255,255,255,1);
+}
+#score{
+    line-height:60px;
+    padding:17px 0 0 26px;
+}
+#score h2{
+    font-size:28px;
+}
+#score li{
+    height:60px;
+    position: relative;
+}
+
+#score nav{
+    vertical-align:top;
+    position: absolute;
+    left:187px;
+    top:12px
+}
+#score nav a{
+    float:left;
+    background:url(../img/star.png) no-repeat -38px 0;
+    width:38px;
+    height:36px;
+    margin-right:39px;
+    transition:0.5s;
+}
+#score nav .active{
+    background-position: 0 0;
+}
