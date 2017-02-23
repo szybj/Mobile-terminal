@@ -1,7 +1,6 @@
 var imgData = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg'];
 window.onload = function() {
     creat();
-    scoreFn();
     formIn()
 }
 
@@ -27,6 +26,10 @@ function tabFn() {
     var iStartTouchX = 0;
     var iStartX = 0;
     auto();
+    if (!window.WscoreFn) {
+        scoreFn();
+        window.WscoreFn = true;
+    }
 
     function auto() {
         oTimer = setInterval(function() {
@@ -131,7 +134,11 @@ function scoreFn() {
             })
         }
     }
-    indexFn();
+    if (!window.WindexFn) {
+        indexFn();
+        window.WindexFn = true;
+    }
+
 }
 
 function infoFn(obj, text) {
@@ -191,9 +198,13 @@ function indexOutFn() {
     var oMask = id('mask');
     var oIndex = id('index');
     var oNews = id('news');
-    addClass(oMask, ' pageShow');
-    addClass(oNews, ' pageShow');
-    newsFn();
+    addClass(oMask, 'pageShow');
+    addClass(oNews, 'pageShow');
+    if (!window.WnewsFn) {
+        newsFn();
+        window.WnewsFn = true;
+    }
+
     setTimeout(function() {
         oMask.style.opacity = 1;
         oIndex.style.filter = 'blur(10px)';
@@ -205,6 +216,7 @@ function indexOutFn() {
         oIndex.style.filter = 'blur(0px)';
         oIndex.style.WebkitFilter = 'blur(0px)';
         oNews.style.opacity = 1;
+        removeClass(oMask, 'pageShow');
     }, 3000);
 };
 
@@ -215,6 +227,7 @@ function newsFn() {
     aInput[0].onchange = function() {
         if (this.files[0].type.split('/')[0] === 'video') {
             newsOutFn();
+            this.value = '';
         } else {
             infoFn(oInfo, '请上传视频');
         }
@@ -222,6 +235,7 @@ function newsFn() {
     aInput[1].onchange = function() {
         if (this.files[0].type.split('/')[0] === 'image') {
             newsOutFn();
+            this.value = '';
         } else {
             infoFn(oInfo, '请上传图片');
         }
@@ -234,7 +248,11 @@ function newsOutFn() {
     addClass(oForm, 'pageShow');
     oNews.style.cssText = '';
     removeClass(oNews, 'pageShow');
-    formIn();
+    if (!window.WformIn) {
+        formIn();
+        window.WformIn = true;
+    }
+
 }
 
 function formIn() {
@@ -251,9 +269,18 @@ function formIn() {
     }
     bind(oBtn, 'touchend', function() {
         if (isOff) {
+             for (var i = 0; i < aFormTags.length; i++) {
+                aFormTags[i].getElementsByTagName('input')[0].checked = false;
+             }
+            isOff = false;
             addClass(oOver, 'pageShow');
             removeClass(oForm, 'pageShow');
-            over();
+            removeClass(oBtn, 'submit');
+            if (!window.Wover) {
+                over();
+                window.Wover = true;
+            }
+
         }
     })
 }
