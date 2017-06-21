@@ -1,0 +1,36 @@
+/*取消点击阴影*/
+a,input,button{
+    -webkit-tap-highlight-color: transparent;
+}
+/*去圆角*/
+input,button{
+    -webkit-appearance:none;
+    border-radius:0;
+}
+
+body{
+    margin:0;
+    /*禁止选中文字*/
+    -webkit-user-select:none;
+    /*横竖屏切换禁止文字缩放*/
+    -webkit-text-size-adjust:100%;
+}
+body *{
+    -webkit-user-select:none;
+    font-family:Helvetica;
+}
+h1{
+    margin:0;
+}
+ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+img{
+    vertical-align:top;
+}
+a{
+    text-decoration: none;
+}
+

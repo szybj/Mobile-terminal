@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalble=no,width=device-width"/>
+    <title>Document</title>
+    <script>
+        (function(){
+            var html = document.documentElement;
+            var hWidth = html.getBoundingClientRect().width;
+            html.style.fontSize = hWidth/15 + 'px';
+        })();
+    </script>
+    <style>
+    body{
+        margin:0;
+    }
+    /*取消点击阴影*/
+    a,input,button{
+        -webkit-tap-highlight-color: transparent;
+    }
+    /*去圆角*/
+    input,button{
+        -webkit-appearance:none;
+        border-radius:0;
+    }
+
+    body{
+        margin:0;
+        /*禁止选中文字*/
+        -webkit-user-select:none;
+        /*横竖屏切换禁止文字缩放*/
+        -webkit-text-size-adjust:100%;
+    }
+    body *{
+        -webkit-user-select:none;
+        font-family:Helvetica;
+    }
+    h1{
+        margin:0;
+    }
+    ul{
+        margin:0;
+        padding:0;
+        list-style:none;
+    }
+    img{
+        vertical-align:top;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    .rows{
+        display:-webkit-box;
+        display:flex;
+        padding:0 0.5rem;
+    }
+    .rows div{
+        width: 0;
+        text-align:center;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+    }
+    .rows div a{
+        display:block;
+        line-height:1.04rem;
+        font-size:0.44rem;
+        color:#999;
+    }
+    .rows div a:before{
+        content:'';
+        display:block;
+        margin:0 auto;
+        width:1.72rem;
+        height:1.7rem;
+       
+        background-size:1.72rem 1.7rem;
+    }
+   .rows div:nth-of-type(1) a:before{
+         background:url(images/asd_03.png);
+    }
+     .rows div:nth-of-type(2) a:before{
+         background:url(images/asd_05.png);
+    }
+     .rows div:nth-of-type(3) a:before{
+         background:url(images/asd_07.png);
+    }
+     .rows div:nth-of-type(4) a:before{
+         background:url(images/asd_09.png);
+    }
+     .rows div:nth-of-type(5) a:before{
+         background:url(images/asd_11.png);
+    }
+    .rows:nth-of-type(2) div:nth-of-type(1) a:before{
+         background:url(images/asd_18.png);
+    }
+       .rows:nth-of-type(2) div:nth-of-type(2) a:before{
+         background:url(images/asd_19.png);
+    }
+       .rows:nth-of-type(2) div:nth-of-type(3) a:before{
+         background:url(images/asd_20.png);
+    }
+       .rows:nth-of-type(2) div:nth-of-type(4) a:before{
+         background:url(images/asd_21.png);
+    }
+       .rows:nth-of-type(2) div:nth-of-type(5) a:before{
+         background:url(images/asd_22.png);
+    }
+    </style>
+</head>
+<body>
+    <div class="rows">
+        <div>
+            <a href="javascript:;">天猫</a>
+        </div>
+         <div>
+            <a href="javascript:;">聚划算</a>
+        </div>
+         <div>
+            <a href="javascript:;">天猫国际</a>
+        </div>
+         <div>
+            <a href="javascript:;">外卖</a>
+        </div>
+         <div>
+            <a href="javascript:;">天猫超市</a>
+        </div>
+
+    </div>
+     <div class="rows">
+        <div>
+            <a href="javascript:;">天猫</a>
+        </div>
+         <div>
+            <a href="javascript:;">聚划算</a>
+        </div>
+         <div>
+            <a href="javascript:;">天猫国际</a>
+        </div>
+         <div>
+            <a href="javascript:;">外卖</a>
+        </div>
+         <div>
+            <a href="javascript:;">天猫超市</a>
+        </div>
+
+    </div>
+</body>
+</html>

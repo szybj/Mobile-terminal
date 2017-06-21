@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new_box</title>
+    <style>
+    body{
+        margin:0;
+    }
+    #box{
+        height:200px;
+        border:1px solid #000;
+        /*新版盒模型*/
+        display:flex;
+        /*主轴排列方向
+            flex-direction:row |colum;
+        */
+        flex-direction: row;
+        /*设置主轴元素排列顺序*/
+        flex-direction:row-reverse;
+        /*主轴富裕空间管理  
+            justify-content:flex-start | flex-end | center | space-around | space-between;
+        */
+        justify-content:space-between;
+    }
+    #box div{
+        flex-grow:1;
+        /*指定元素的位置
+            pprder:1
+        数值越小，越靠前
+        */
+        color:#fff;
+        text-align:center; 
+        line-height:50px;
+        width:50px;
+        height:50px;
+        background-color:#f00;
+        /*margin:auto;*/
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>

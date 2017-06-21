@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>old_box</title>
+    <style>
+    body{
+        margin:0;
+    }
+    #box{
+        height:200px;
+        border:1px solid #000;
+        /*老版盒模型*/
+        display:-webkit-box;
+        /*主轴方向
+            webkit-box-orient:horizontal | vertical
+        */
+        -webkit-box-orient:horizontal;
+        /*排列顺序
+            -webkit-box-direction:reverse | nomarl
+        */
+        -webkit-box-direction:reverse;
+        /*主轴富裕空间管理
+             -webkit-box-pack:start | end | center |justify
+        */
+        -webkit-box-pack:start;
+        /*侧轴富裕空间管理
+            -webkit-box-align:start | end | center
+        */
+         -webkit-box-align:center
+    }
+    #box div{
+        color:#fff;
+        text-align:center; 
+        line-height:50px;
+        width:50px;
+        height:50px;
+        background-color:#f00;
+        /*元素弹性空间*/
+        -webkit-box-flex:1;
+        /*指定元素的位置
+        -webkit-box-ordinal-group:1
+        数值越小，越靠前
+        */
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>
