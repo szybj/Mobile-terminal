@@ -4,98 +4,94 @@
     <meta charset="UTF-8">
     <meta name='viewport' content="width=device-width,user-scalable=no">
     <title>Document</title>
-    <script src="MTween.js"></script>
-    <script>
+    <script type="text/javascript" src="mTween.js"></script>
+    <script type="text/javascript">
     (function(){
-        var html = document.documentElement,
+        setRem();
+        window.addEventListener("orientation" in window?"deviceorientation":"resize",setRem)
+        function setRem(){
+            var html = document.documentElement,
             wHtml = html.getBoundingClientRect().width;
-        html.style.fontSize = wHtml/15 + 'px';
+            html.style.fontSize = wHtml/15 + 'px';
+        }
     })()
     </script>
     <style>
-    body{
-        margin:0;
-    }
-    body,html{
-        height:100%;
-        position: relative;
-        overflow:hidden;
-    }
-    header{
-        font-size:0.6rem;
-        height:1rem;
-        line-height:1rem;
-        text-align:center;
-        color:#fff;
-        background:#000;
-    }
-    #wrap{
-        position: absolute;
-        overflow:hidden;
-        left:0;
-        right:0;
-        top:1rem;
-        bottom:1rem;
-    }
-    #list{
-        margin:0;
-        padding:0;
-        list-style:none;
-    }
-    #list li{
-        height:1rem;
-        line-height:1rem;
-        text-indent: 0.4rem;
-        font-size:0.6rem;
-    }
-    footer{
-        position: absolute;
-        left:0;
-        right:0;
-        bottom:0;
-        height:1rem;
-        line-height:1rem;
-        color:#fff;
-        text-align:center;
-        font-size:0.6rem;
-        background:#000;
-    }
+        body{
+            margin:0;
+        }
+        body,html{
+            height:100%;
+            position: relative;
+            overflow:hidden;
+        }
+        header{
+            font-size:0.6rem;
+            height:1rem;
+            line-height:1rem;
+            text-align:center;
+            color:#fff;
+            background:#000;
+        }
+        #wrap{
+            position: absolute;
+            overflow:hidden;
+            left:0;
+            right:0;
+            top:1rem;
+            bottom:1rem;
+        }
+        #list{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        #list li{
+            height:1rem;
+            line-height:1rem;
+            text-indent: 0.4rem;
+            font-size:0.6rem;
+        }
+        footer{
+            position: absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            height:1rem;
+            line-height:1rem;
+            color:#fff;
+            text-align:center;
+            font-size:0.6rem;
+            background:#000;
+        }
     </style>
+    
 </head>
 <body>
-    <header>
-        移动端自定义滑屏
-    </header>
+    <header>移动端自定义滑屏</header>
     <section id="wrap">
         <ul id="list"></ul>
     </section>
-    <footer>
-        底部版权    
-    </footer>
-    <script>
-
-     function setListInner(){
+    <footer>底部版权</fofooteroter>
+<script type="text/javascript">
+    function setListInner(){
         var inner = '';
         for(var i = 0; i < 300; i++){
             inner+="<li>这是第"+i+"行li</li>";
         }
         document.querySelector("#list").innerHTML = inner;
     }
-    window.onload = function(){
-         setListInner();
-    }
-   
-
-
     document.addEventListener('touchstart',function(ev){
         ev.preventDefault();
     });
-    var oWrap = document.querySelector('#wrap')
+    
+    setListInner();
+    var oWrap = document.querySelector('#wrap');
     mScroll({
         el:wrap,
         isScroll:true
     })
-
+  
     function mScroll(init){
         if(!init.el){
             return;
@@ -110,14 +106,12 @@
         lastTimeDis = 0,
         maxTranslate = oWrap.clientHeight - oInner.offsetHeight;
         oInner.style.minHeight = "100%";
-   
         if(init.isScroll){
             var scrollBar = document.createElement("div"),
                 scrollBarScale = oWrap.clientHeight/oInner.offsetHeight;
                 scrollBar.style.cssText = "width:6px;background:rgba(0,0,0,0.5);position:absolute;top:0;right:0;border-radius:3px;opacity:0;transition:0.3s opacity";
                 oWrap.appendChild(scrollBar);
         }
-   
     oInner.addEventListener('touchstart',function(ev){
         maxTranslate = oWrap.clientHeight - oInner.offsetHeight;
         if(init.isScroll){
@@ -130,7 +124,6 @@
                 scrollBar.style.height = oWrap.clientHeight * scrollBarScale + "px";
             }
         }
-       
         clearInterval(oInner.timer);
         css(this,'translateZ',0.01);
         startPoint = ev.changedTouches[0].pageY;
@@ -139,7 +132,6 @@
         lastTime = new Date().getTime();
         lastTimeDis = lastDis = 0;
     });
-
     oInner.addEventListener('touchmove',function(ev){
         var nowPoint = ev.changedTouches[0].pageY;
         var nowTime = new Date().getTime();
@@ -152,7 +144,6 @@
         lastTimeDis = nowTime - lastTime;
         lastTime = nowTime;
     });
-
     oInner.addEventListener('touchend',function(){
         var speed = Math.round(lastDis / lastTimeDis * 10);
         speed = lastTimeDis<=0?0:speed;
@@ -172,61 +163,16 @@
 			target: {translateY:target},
 			time: Math.round(Math.abs(target - css(oInner,"translateY"))*2),
 			type: type,
-            callBack(){
+            callBack:function(){
                 (!init.isScroll)||(scrollBar.style.opacity = "0");
             },
-            callIn(){
+            callIn:function(){
                 var translateY = css(oInner,"translateY");
                 (!init.isScroll)||css(scrollBar,'translateY',-translateY * scrollBarScale);
             }
 		});
     });
-     function cssTransform(element,attr,val){
-            if(!element.transform){
-                element.transform = {}
-            }
-            if(typeof val == "undefined"){
-                if(!element.transform[attr]){
-                    switch(attr){
-                        case "scale":
-                        case "scaleX":
-                        case "scaleY":
-                        case "scaleZ":
-                            element.transform[attr] = 100;
-                        break;
-                        default:
-                            element.transform[attr] = 0;
-                    }
-                }
-                  return element.transform[attr];
-            } else{
-               element.transform[attr] = val;
-               var transformVal = '';
-               for(var key in element.transform){
-                   switch(key){
-                        case "scale":
-                        case "scaleX":
-                        case "scaleY":
-                        case "scaleZ":
-                            transformVal += " " + key +"("+(element.transform[key]/100)+")";
-                        break;
-                        case "rotate":
-                        case "rotateX":
-                        case "rotateY":
-                        case "rotateZ":
-                        case "skewX":
-                        case "skewY":
-                            transformVal += " " + key +"("+element.transform[key]+"deg)";
-                        break;
-                        default:
-                            transformVal += " " + key +"("+element.transform[key]+"px)";
-                    }
-               }
-                element.style.WebkitTransform = element.style.transform = transformVal;
-           }
-        }
-    }
-    
-    </script>
+}
+</script>
 </body>
 </html>

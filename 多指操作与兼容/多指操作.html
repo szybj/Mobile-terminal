@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>Document</title>
+    <style>
+    #box{
+        width:100px;
+        height:100px;
+        background: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+    alert(1);
+    var box = document.querySelector("#box");
+    document.addEventListener('touchstart',function(ev){
+        ev.preventDefault();
+    })
+    //当手指触摸元素，当前屏幕有两根以上的手指时执行
+    box.addEventListener('gesturestart',function(ev){
+        this.style.background = "yellow";
+    });
+    //当触发了gesturestart时，当屏幕上的手指个数少于两个，或者当前元素没有手指了，就会触发gestureend
+    box.addEventListener("gestureend",function(ev){
+        this.style.background = "yellow";
+    });
+    box.addEventListener("gesturechange",function(ev){
+        //ev.scale;缩放比：
+        //change时，两根手指之间的距离和start时两根手指之间距离的比值
+        this.innerHTML = ev.scale;
+        //ev.rotatin 旋转差
+        // change时两根手指形成的直线和start时形成的直线，中间形成的夹角
+    });
+    </script>
+</body>
+</html>
