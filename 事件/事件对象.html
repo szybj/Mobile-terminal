@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>Document</title>
+    <style>
+    #box{
+        width:200px;
+        height:200px;
+        background:red;
+        position: absolute;
+        left:0;
+        top:0;
+        color:#fff;
+        font-size:50px;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        oBox.addEventListener('touchmove',start)
+        function start(ev){
+            // touches当前位于屏幕上的所有手指的一个列表
+            // targetTouches 位于当前DOM上的 一个手指列表
+            // changeTouches 设计当前事件手指的一个列表
+            this.innerHTML = ev.touches.length;
+        }
+    </script>
+</body>
+</html>

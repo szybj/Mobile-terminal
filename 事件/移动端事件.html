@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <style>
+    #box{
+        width:200px;
+        height:200px;
+        background:red;
+        position: absolute;
+        top:0;
+        left:0;
+        opacity: 0.5
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        oBox.addEventListener('touchstart',start);
+        // click在按下后，长时间抬起，不起作用
+        // 执行顺序 touchstart touchend click
+        function start(){
+            console.log('start');
+           
+        }
+        oBox.addEventListener('touchmove',move);
+        function move(){
+           console.log('move')
+        }
+        oBox.addEventListener('touchend',end);
+        function end(){
+            console.log('end')
+             this.style.display = 'none';   
+        }
+        oBox.addEventListener('click',click);
+        function click(){
+            console.log('click')
+             
+        }
+    </script>
+</body>
+</html>

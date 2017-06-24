@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>Document</title>
+    <style>
+    #box{
+        width:200px;
+        height:200px;
+        background: red;
+        position: absolute;
+        top:0;
+        left:0;
+        opacity:0.5;
+    }
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com" id='a'>点我试试</a>
+    <div id="box"></div>
+    <script>
+        document.addEventListener('touchstart',function(ev){
+            ev.preventDefault();    
+        });
+        var oBox = document.getElementById('box');
+        var oA = document.getElementById('a');
+        oBox.addEventListener('touchend',end);
+        oA.addEventListener('touchstart',function(){
+            window.location.href='http://www.sina.cn';
+        })
+        
+        function end(){
+            this.style.display = 'none';
+        }
+      
+    </script>
+</body>
+</html>

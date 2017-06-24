@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content="width=device-width,user-scalable=no">
+    <title>Document</title>
+    <style>
+    body{
+        margin:0;
+    }
+    #wrap{
+        width:100px;
+        height:100px;
+        padding:100px;
+        border:1px solid #000;
+    }
+    #div{
+        height:100px;
+        background:red;
+    }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="div"></div>
+    </div>
+    <script>
+        var oDiv = document.querySelector('#div');
+        oDiv.addEventListener('touchstart',function(){
+           var deg = cssTransform(this,'translateX');
+           deg+=30;
+           cssTransform(this,'translateX',deg)
+           console.log(deg)
+        })
+        function cssTransform(element,attr,val){
+            if(!element.transform){
+                element.transform = {}
+            }
+            if(typeof val == "undefined"){
+                if(!element.transform[attr]){
+                    switch(attr){
+                        case "scale":
+                        case "scaleX":
+                        case "scaleY":
+                        case "scaleZ":
+                            element.transform[attr] = 100;
+                        break;
+                        default:
+                            element.transform[attr] = 0;
+                    }
+                }
+                  return element.transform[attr];
+            } else{
+               element.transform[attr] = val;
+               var transformVal = '';
+               for(var key in element.transform){
+                   switch(key){
+                        case "scale":
+                        case "scaleX":
+                        case "scaleY":
+                        case "scaleZ":
+                            transformVal += " " + key +"("+(element.transform[key]/100)+")";
+                        break;
+                        case "rotate":
+                        case "rotateX":
+                        case "rotateY":
+                        case "rotateZ":
+                        case "skewX":
+                        case "skewY":
+                            transformVal += " " + key +"("+element.transform[key]+"deg)";
+                        break;
+                        default:
+                            transformVal += " " + key +"("+element.transform[key]+"px)";
+                    }
+               }
+                element.style.WebkitTransform = element.style.transform = transformVal;
+           }
+        }
+    </script>
+</body>
+</html>

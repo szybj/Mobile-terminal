@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>无缝滚动</title>
+    <script>
+        var html = document.documentElement;
+        var wHtml = html.getBoundingClientRect().width;
+        html.style.fontSize = wHtml/15 + 'px';
+
+        document.addEventListener('touchstart',function(ev){
+            ev.preventDefault();
+        })
+    </script>
+    <style>
+    body,html{
+        margin:0;
+        width:100%;
+        overflow:hidden;
+    }
+    .wrap{
+        height:4.68rem;
+        position:relative;
+    }
+    .list{
+        padding:0;
+        margin:0;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        list-style:none;
+    }
+    .list li{
+        float:left;
+        width:15rem;
+    }
+    .list img{
+        width:15rem;
+        display:block;
+    }
+    nav{
+        width:15rem;
+        height:10px;
+        position: absolute;
+        bottom:5px;
+        z-index: 1;
+        text-align: center;
+    }
+    nav a{
+        width:15px;
+        height:15px;
+        display:inline-block;
+        background:red;
+        border-radius:50%;
+        vertical-align: top;
+    }
+    nav a.active{
+        background:#fff;
+    }
+    </style>
+</head>
+<body>
+   <section class='wrap'>
+    <ul class='list'>
+        <li><img src="./images/TB1CWf9KpXXXXbuXpXXSutbFXXX.jpg_q50.jpg" alt=""></li>
+        <li><img src="./images/TB24XbauhXkpuFjy0FiXXbUfFXa_!!148-0-yamato.jpg_q50.jpg" alt=""></li>
+        <li><img src="./images/TB2F9Z3tYtlpuFjSspoXXbcDpXa_!!147-0-luban.jpg_q50.jpg" alt=""></li>
+        <li><img src="./images/TB2HmMGesPRfKJjSZFOXXbKEVXa_!!87-0-luban.jpg_q50.jpg" alt=""></li>
+        <li><img src="./images/TB2QWgJw4tmpuFjSZFqXXbHFpXa_!!29-0-luban.jpg_q50.jpg" alt=""></li>
+    </ul>
+    <nav class="nav">
+        <a href="javascript:;" class='active'></a>
+        <a href="javascript:;" ></a>
+        <a href="javascript:;" ></a>
+        <a href="javascript:;" ></a>
+        <a href="javascript:;" ></a>
+    </nav>
+   </section>
+   <script>
+    var wrap = document.querySelector('.wrap'),
+        list = wrap.querySelector('.list'),
+        a = document.querySelector('.nav').querySelectorAll('a'),
+        disX = 0,//按下时的坐标
+        listL = 0,//按下的时候，list的left值
+        w = wrap.clientWidth,
+        len = 0,
+        iIndex = 0;
+        n = 0;//当前选中的图片
+
+
+        list.innerHTML+=list.innerHTML;  
+        len = list.children.length;
+              
+        list.style.width = w * len+'px';
+
+        list.addEventListener('touchstart',start);
+        list.addEventListener('touchmove',move);
+        list.addEventListener('touchend',end);
+
+        function start(ev){
+            var e = ev.changedTouches[0];
+            disX = e.clientX;
+            listL = this.offsetLeft;
+            list.style.transition = 'none';
+            var num = Math.abs(Math.round(list.offsetLeft / w));
+            if(num == 0){
+                num = a.length;
+                list.style.left = -num * w + 'px';
+            }
+            if(num == len-1){
+                num = a.length-1;
+                list.style.left = -num * w + 'px';
+            }
+           
+        }
+        function move(ev){
+            var e = ev.changedTouches[0];
+            list.style.left = (e.clientX - disX)+listL+'px';
+        }
+        function end(){
+            var num = Math.abs(Math.round(list.offsetLeft / w));
+            list.style.transition = '0.5s';
+            list.style.left = -num * w + 'px';
+            a[n].className = '';
+            a[num%a.length].className = 'active';
+            n = num%a.length;
+        }
+       
+   </script>
+</body>
+</html>
