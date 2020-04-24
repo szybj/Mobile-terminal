@@ -1,0 +1,120 @@
+.border(@direction, @color, @borderRatio:1px, @radius:4px) when(@direction = 'all'){
+    position: relative;
+    [data-dpr="1"] &::after{
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        border: @borderRatio solid @color;
+        border-radius: @radius * 2;
+        transform-origin: 0 -2Px;
+        transform: scale(.5);
+    }
+    [data-dpr="2"] &{
+        border: @borderRatio solid @color;
+    }
+    [data-dpr="3"] &{
+        border: @borderRatio solid @color;
+    }
+}
+.border(@direction, @color, @borderRatio:1px, @radius:4px) when(@direction = 'bottom'){
+    position: relative;
+    [data-dpr="1"] &::after{
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: @borderRatio;
+        width: 100%;
+        background-color: @color;
+        transform-origin: 0 0;
+        transform: scale3d(1, .5, 1);
+    }
+    [data-dpr="2"] &{
+        border-bottom: @borderRatio solid @color;
+    }
+    [data-dpr="3"] &{
+        border-bottom: @borderRatio solid @color;
+    }
+    
+}
+
+.border(@direction, @color, @borderRatio:1px, @radius:4px) when(@direction = 'left'){
+    position: relative;
+    [data-dpr="1"] &::after{
+        display: block;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: @borderRatio;
+        height: 100%;
+        background-color: @color;
+        transform-origin: 0 0;
+        transform: scale3d(.5, 1, 1);
+    }
+    [data-dpr="2"] &{
+        border-left: @borderRatio solid @color;
+    }
+    [data-dpr="3"] &{
+        border-left: @borderRatio solid @color;
+    }
+    
+}
+
+.border(@direction, @color, @borderRatio:1px, @radius:4px) when(@direction = 'top'){
+    position: relative;
+    [data-dpr="1"] &::after{
+        display: block;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: @borderRatio;
+        width: 100%;
+        background-color: @color;
+        transform-origin: 0 0;
+        transform: scale3d(1, .5, 1);
+    }
+    [data-dpr="2"] &{
+        border-top: @borderRatio solid @color;
+    }
+    [data-dpr="3"] &{
+        border-top: @borderRatio solid @color;
+    }
+    
+}
+
+.border(@direction, @color, @borderRatio:1px, @radius:4px) when(@direction = 'right'){
+    position: relative;
+    [data-dpr="1"] &::after{
+        display: block;
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: @borderRatio;
+        height: 100%;
+        background-color: @color;
+        transform-origin: 0 0;
+        transform: scale3d(.5, 1, 1);
+    }
+    [data-dpr="2"] &{
+        border-right: @borderRatio solid @color;
+    }
+    [data-dpr="3"] &{
+        border-right: @borderRatio solid @color;
+    }
+    
+}
+
+.border(@direction) when(@direction = 'none'){
+    border: none;
+    [data-dpr="1"] &::after{
+        display: none;
+    }   
+}
